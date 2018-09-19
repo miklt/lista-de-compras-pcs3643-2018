@@ -3,9 +3,7 @@ import React from "react";
 
 const BotaoRemover = (props) => {
     return (
-        <Button onClick={props.onClick} icon>
-            <Icon name="trash alternate"/>
-        </Button>
+            <Icon onClick={props.onClick} color={'black'} size={'small'} name="delete"/>
     )
 };
 export default BotaoRemover

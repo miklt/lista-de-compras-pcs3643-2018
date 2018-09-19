@@ -17,7 +17,7 @@ export default class FormularioAdicionarItem extends Component{
             <Grid.Row>
                 <Grid.Column>
                     <Form size={'large'} onSubmit={this.enviar }>
-                        <Form.Input label={'Item'}
+                        <Form.Input
                                     autoFocus
                                     placeholder='Que você vai comprar hoje?'
                                     onChange={this.onChange}
