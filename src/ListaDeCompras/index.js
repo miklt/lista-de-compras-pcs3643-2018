@@ -1,3 +1,3 @@
 import TabelaDeCompras from './TabelaDeCompras'
-import {TabelaDeItens,FormularioAdicionarItem} from './TabelaDeComprasv2'
+import {TabelaDeItens,FormularioAdicionarItem} from './TabelaDeComprasv3'
 export {TabelaDeCompras,TabelaDeItens,FormularioAdicionarItem}

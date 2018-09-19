@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Table,Button,Form, Grid} from 'semantic-ui-react';
-const FormularioAdicionarItem = () => {
+const FormularioAdicionarItem = (adicionarItem) => {
     return (
         <Grid>
             <Grid.Row>
@@ -10,7 +10,7 @@ const FormularioAdicionarItem = () => {
                         <label>Item</label>
                         <input placeholder='Que você vai comprar?' />
                     </Form.Field>
-                    <Button type='submit'>Adicionar</Button>
+                    <Button onClick={adicionarItem} type='submit'>Adicionar</Button>
                 </Form>
             </Grid.Column>
             </Grid.Row>
