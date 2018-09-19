@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {TabelaDeItens, FormularioAdicionarItem} from './ListaDeCompras'
+import {Grid} from 'semantic-ui-react'
 const listaDeItens = ['feijão','arroz','leite','açúcar','morangos'];
 
 class App extends Component {
@@ -7,7 +8,7 @@ class App extends Component {
       super();
       this.state = {
         listaDeCompras : listaDeItens
-      }
+      };
       this.onAdicionarItem = this.onAdicionarItem.bind(this);
       this.onRemoverItem = this.onRemoverItem.bind(this);
   }
@@ -16,17 +17,23 @@ class App extends Component {
     this.setState({listaDeCompras:lista});
   }
   onRemoverItem(elemento){
-    const lista = this.state.listaDeCompras.filter(item => item  != elemento);
+      console.log(elemento);
+    const lista = this.state.listaDeCompras.filter(item => item  !== elemento);
     this.setState({listaDeCompras:lista});
   }
   
   render() {
     const {listaDeCompras} = this.state;
     return (
-      <div>      
-        <FormularioAdicionarItem onAdicionarItem={this.onAdicionarItem}/>
-        <TabelaDeItens itens={listaDeCompras} onRemoverItem = {this.onRemoverItem}/>
-      </div>
+      <Grid columns={2}>
+          <Grid.Row>
+              <Grid.Column width={10}>
+                <FormularioAdicionarItem onAdicionarItem={this.onAdicionarItem}/>
+                <TabelaDeItens itens={listaDeCompras} onRemoverItem = {this.onRemoverItem}/>
+              </Grid.Column>
+          </Grid.Row>
+
+      </Grid>
       );
   }
 }
