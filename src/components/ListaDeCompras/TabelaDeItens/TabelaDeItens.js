@@ -1,7 +1,7 @@
 import {Component} from "react";
 import {Table} from "semantic-ui-react";
 import React from "react";
-import {BotaoRemover} from '../BotaoRemover'
+import {BotaoRemover} from '../BotaoRemover/index'
 
 class TabelaDeItens extends Component {
     constructor(props){

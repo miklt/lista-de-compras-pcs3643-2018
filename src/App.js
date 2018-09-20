@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {TabelaDeItens, FormularioAdicionarItem} from './ListaDeCompras'
+import {TabelaDeItens, FormularioAdicionarItem} from './components/ListaDeCompras'
 import {Grid, Header, Icon} from 'semantic-ui-react'
 const listaDeItens = ['feijão','arroz','leite','açúcar','morangos'];
 
@@ -36,8 +36,6 @@ class App extends Component {
                 </Header></Grid.Row>
                 <Grid.Row>
                     <Grid.Column width={10}>
-
-
                         <FormularioAdicionarItem onAdicionarItem={this.onAdicionarItem}/>
                         <TabelaDeItens itens={listaDeCompras} onRemoverItem = {this.onRemoverItem}/>
                     </Grid.Column>

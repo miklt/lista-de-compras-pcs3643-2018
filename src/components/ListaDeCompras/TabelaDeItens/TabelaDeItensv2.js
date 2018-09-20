@@ -1,12 +1,12 @@
 import {Component} from "react";
-import {Grid, Icon,Label, Segment} from "semantic-ui-react";
+import {Grid, Icon,Label, Message} from "semantic-ui-react";
 import React from "react";
-import {BotaoRemover} from '../BotaoRemover'
+import {BotaoRemover} from '../BotaoRemover/index'
 
 class TabelaDeItens extends Component {
     constructor(props){
         super(props);
-        //this.state = {itens:props.itens}
+        this.state = {itens:props.itens};
         this.corpoDaTabela = this.corpoDaTabela.bind(this);
     }
     corpoDaTabela = () => {
@@ -20,7 +20,7 @@ class TabelaDeItens extends Component {
     };
     listaVazia = () =>{
         return (
-            <Segment>A lista de Compras está Vazia</Segment>
+            <Message warning attached={'bottom'}><Icon name={'warning'}/>A lista de Compras está Vazia</Message>
         )
     };
 
