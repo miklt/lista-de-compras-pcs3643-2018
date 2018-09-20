@@ -1,8 +1,10 @@
 import {Component} from "react";
 import {Icon, Grid, Form} from "semantic-ui-react";
 import React from "react";
+import './FormularioAdicionarItem.css';
 
-export default class FormularioAdicionarItem extends Component{
+
+class FormularioAdicionarItem extends Component{
     state = {item:''};
     onChange = (e, {name,value}) => this.setState({[name]:value});
     enviar = () => {
@@ -12,6 +14,7 @@ export default class FormularioAdicionarItem extends Component{
         this.setState({item: ''});
     };
     render(){
+        const {onLimpar,isListaVazia} = this.props;
         const {item} = this.state;
         return <Form size={'large'} onSubmit={this.enviar }>
             <Form.Input
@@ -20,11 +23,18 @@ export default class FormularioAdicionarItem extends Component{
                 onChange={this.onChange}
                 name='item'
                 value={item}/>
-            <Form.Button color={'green'} fluid
-                         type='submit'
-                         disabled={!this.state.item}>
-                <Icon name={'plus'}/>
-            </Form.Button>
+            <Form.Group widths='equal' >
+                <Form.Button color={'green'}
+                             type='submit'
+                             fluid
+                             disabled={!this.state.item}>
+                    Adicionar
+                </Form.Button>
+                <Form.Button color={'yellow'} disabled={isListaVazia} onClick={onLimpar} type={'button'} fluid >
+                    Limpar
+                </Form.Button>
+            </Form.Group>
         </Form>
     }
 }
+export default FormularioAdicionarItem

@@ -1,2 +1,2 @@
 import BotaoRemover from './BotaoRemover'
-export {BotaoRemover}
+export {BotaoRemover }

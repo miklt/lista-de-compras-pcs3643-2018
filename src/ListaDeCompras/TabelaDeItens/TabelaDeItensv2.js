@@ -1,7 +1,7 @@
 import {Component} from "react";
 import {Grid, Icon,Label, Message} from "semantic-ui-react";
 import React from "react";
-import {BotaoRemover} from '../BotaoRemover/index'
+import {BotaoRemover} from '../Botoes/index'
 
 class TabelaDeItens extends Component {
     constructor(props){
@@ -11,7 +11,7 @@ class TabelaDeItens extends Component {
     }
     corpoDaTabela = () => {
         const {onRemoverItem,itens} = this.props;
-        return  <Grid columns={4} padded relaxed >
+        return  <Grid columns={5} padded relaxed >
                 {itens.map(item => <Grid.Column  key={item} textAlign={'center'} >
                     <Label color={'blue'} size={'small'}>{item}<BotaoRemover onClick={() => onRemoverItem(item)}/></Label></Grid.Column>
 
