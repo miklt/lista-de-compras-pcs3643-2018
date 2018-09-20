@@ -11,9 +11,9 @@ class TabelaDeItens extends Component {
     }
     corpoDaTabela = () => {
         const {onRemoverItem,itens} = this.props;
-        return  <Grid columns={7} padded>{
-            itens.map(item => <Grid.Column width={2} key={item}>
-                    <Label  >{item}<BotaoRemover onClick={() => onRemoverItem(item)}/></Label></Grid.Column>
+        return  <Grid columns={4} padded relaxed >
+                {itens.map(item => <Grid.Column  key={item} textAlign={'center'} >
+                    <Label color={'blue'} size={'small'}>{item}<BotaoRemover onClick={() => onRemoverItem(item)}/></Label></Grid.Column>
 
                 )}
                 </Grid>

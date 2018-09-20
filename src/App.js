@@ -30,11 +30,13 @@ class App extends Component {
         const {listaDeCompras} = this.state;
         return (
             <Grid columns={1} centered >
-                <Grid.Row><Header as='h2' icon textAlign='center'>
+                <Grid.Row>
+                    <Header as='h2' icon textAlign='center'>
                     <Icon name='shop' circular />
                     <Header.Content>Lista de Compras</Header.Content>
-                </Header></Grid.Row>
-                <Grid.Row>
+                </Header>
+                </Grid.Row>
+                <Grid.Row centered>
                     <Grid.Column width={10}>
                         <FormularioAdicionarItem onAdicionarItem={this.onAdicionarItem}/>
                         <TabelaDeItens itens={listaDeCompras} onRemoverItem = {this.onRemoverItem}/>

@@ -13,24 +13,18 @@ export default class FormularioAdicionarItem extends Component{
     };
     render(){
         const {item} = this.state;
-        return <Grid>
-            <Grid.Row>
-                <Grid.Column>
-                    <Form size={'large'} onSubmit={this.enviar }>
-                        <Form.Input
-                                    autoFocus
-                                    placeholder='Que você vai comprar hoje?'
-                                    onChange={this.onChange}
-                                    name='item'
-                                    value={item}/>
-                        <Form.Button color={'green'} fluid
-                                     type='submit'
-                                     disabled={!this.state.item}>
-                            <Icon name={'plus'}/>
-                        </Form.Button>
-                    </Form>
-                </Grid.Column>
-            </Grid.Row>
-        </Grid>
+        return <Form size={'large'} onSubmit={this.enviar }>
+            <Form.Input
+                autoFocus
+                placeholder='Que você vai comprar hoje?'
+                onChange={this.onChange}
+                name='item'
+                value={item}/>
+            <Form.Button color={'green'} fluid
+                         type='submit'
+                         disabled={!this.state.item}>
+                <Icon name={'plus'}/>
+            </Form.Button>
+        </Form>
     }
 }
