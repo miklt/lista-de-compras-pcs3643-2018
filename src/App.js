@@ -38,12 +38,12 @@ class App extends Component {
             <Grid columns={1} centered className={'App'}>
                 <Grid.Row>
                     <Header inverted as='h2' icon textAlign='center'>
-                        <Icon size={'large'} color={'red'} name='shop' circular />
+                        <Icon  inverted color={'red'} name='shop' circular />
                         <Header.Content >Lista de Compras</Header.Content>
                     </Header>
                 </Grid.Row>
                 <Grid.Row centered>
-                    <Grid.Column width={10}>
+                    <Grid.Column width={4}>
                         <FormularioAdicionarItem isListaVazia={this.isListaVazia()}
                                                  onAdicionarItem={this.onAdicionarItem}
                                                  onLimpar={this.onLimpar}/>
@@ -51,7 +51,6 @@ class App extends Component {
                         <TabelaDeItens itens={listaDeCompras} onRemoverItem = {this.onRemoverItem}/>
                     </Grid.Column>
                 </Grid.Row>
-
             </Grid>
         );
     }
