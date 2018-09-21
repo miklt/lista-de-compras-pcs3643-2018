@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.css'
 import {TabelaDeItens, FormularioAdicionarItem} from './ListaDeCompras'
 import {Grid, Header, Icon} from 'semantic-ui-react'
 const listaDeItens = ['feijão','arroz','leite','açúcar','morangos'];
@@ -34,11 +35,11 @@ class App extends Component {
     render() {
         const {listaDeCompras} = this.state;
         return (
-            <Grid columns={1} centered >
+            <Grid columns={1} centered className={'App'}>
                 <Grid.Row>
-                    <Header as='h2' icon textAlign='center'>
-                        <Icon name='shop' circular />
-                        <Header.Content>Lista de Compras</Header.Content>
+                    <Header inverted as='h2' icon textAlign='center'>
+                        <Icon size={'large'} color={'red'} name='shop' circular />
+                        <Header.Content >Lista de Compras</Header.Content>
                     </Header>
                 </Grid.Row>
                 <Grid.Row centered>
