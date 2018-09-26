@@ -30,9 +30,11 @@ class FormularioAdicionarItem extends Component{
                              disabled={!this.state.item}>
                     Adicionar
                 </Form.Button>
-                <Form.Button color={'yellow'} disabled={isListaVazia} onClick={onLimpar} type={'button'} fluid >
-                    Limpar
-                </Form.Button>
+<Form.Button color={'yellow'} disabled={isListaVazia}
+         onClick={onLimpar} type={'button'}
+         fluid >
+Limpar
+</Form.Button>
             </Form.Group>
         </Form>
     }

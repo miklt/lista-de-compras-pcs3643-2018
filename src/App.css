@@ -1,7 +1,5 @@
 .App {
   background-image: url("imagens/background-mercado.png");
-  background-repeat: no-repeat;
-  background-origin: content-box;
   background-size: cover;
-
+  background-repeat: no-repeat;
 }

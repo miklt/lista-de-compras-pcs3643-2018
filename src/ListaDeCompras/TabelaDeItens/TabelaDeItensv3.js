@@ -1,6 +1,7 @@
 import {Component} from "react";
 import {Grid, Icon,Label, Message} from "semantic-ui-react";
 import React from "react";
+import './TabelaDeItens.css'
 import {BotaoRemover} from '../Botoes/index'
 
 class TabelaDeItens extends Component {
@@ -13,7 +14,7 @@ class TabelaDeItens extends Component {
         const {onRemoverItem,itens} = this.props;
         return  <div>
             {itens.map(item =>
-                <Label key={item} color={'blue'} size={'small'}>{item}<BotaoRemover onClick={() => onRemoverItem(item)}/></Label>
+                <Label id={item} className={'item-lista'} key={item} color={'blue'} size={'small'}>{item}<BotaoRemover onClick={() => onRemoverItem(item)}/></Label>
 
             )}
         </div>

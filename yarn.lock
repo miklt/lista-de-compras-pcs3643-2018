@@ -2922,7 +2922,7 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-gh-pages@^2.0.0:
+gh-pages@latest:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/gh-pages/-/gh-pages-2.0.0.tgz#6615f6cb2abc0bcf22668e15b13afc5e304b9d93"
   dependencies:
@@ -5630,7 +5630,7 @@ react-scripts@latest:
   optionalDependencies:
     fsevents "^1.1.3"
 
-react-test-renderer@^16.5.2:
+react-test-renderer@latest:
   version "16.5.2"
   resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.5.2.tgz#92e9d2c6f763b9821b2e0b22f994ee675068b5ae"
   dependencies:

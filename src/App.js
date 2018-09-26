@@ -35,23 +35,23 @@ class App extends Component {
     render() {
         const {listaDeCompras} = this.state;
         return (
-            <Grid columns={1} centered className={'App'}>
-                <Grid.Row>
-                    <Header inverted as='h2' icon textAlign='center'>
-                        <Icon  inverted color={'red'} name='shop' circular />
-                        <Header.Content >Lista de Compras</Header.Content>
-                    </Header>
-                </Grid.Row>
-                <Grid.Row centered>
-                    <Grid.Column width={4}>
-                        <FormularioAdicionarItem isListaVazia={this.isListaVazia()}
-                                                 onAdicionarItem={this.onAdicionarItem}
-                                                 onLimpar={this.onLimpar}/>
+<Grid columns={1} centered className={'App'}>
+    <Grid.Row>
+        <Header inverted as='h2' icon textAlign='center'>
+            <Icon  inverted color={'red'} name='shop' circular />
+            <Header.Content >Lista de Compras</Header.Content>
+        </Header>
+    </Grid.Row>
+    <Grid.Row centered>
+        <Grid.Column width={8}>
+            <FormularioAdicionarItem isListaVazia={this.isListaVazia()}
+                                     onAdicionarItem={this.onAdicionarItem}
+                                     onLimpar={this.onLimpar}/>
 
-                        <TabelaDeItens itens={listaDeCompras} onRemoverItem = {this.onRemoverItem}/>
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
+            <TabelaDeItens itens={listaDeCompras} onRemoverItem = {this.onRemoverItem}/>
+        </Grid.Column>
+    </Grid.Row>
+</Grid>
         );
     }
 }
