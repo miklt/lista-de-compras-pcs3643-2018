@@ -405,7 +405,7 @@
     }]
   }, {
     "id": "feca1107-d340-4555-9564-1d34ee89fd7a",
-    "name": "Assert Title",
+    "name": "Verificar Título \"Lista de Compras\"",
     "commands": [{
       "id": "8ffc11b2-d2e5-4736-8734-508b9ced1cbf",
       "comment": "",

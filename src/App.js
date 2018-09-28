@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import './App.css'
 import {TabelaDeItens, FormularioAdicionarItem} from './ListaDeCompras'
 import {Grid, Header, Icon} from 'semantic-ui-react'
+//Esta lista de itens é utilizada para inicializar o estado do App.
 const listaDeItens = ['feijão','arroz','leite','açúcar','morangos'];
+
 
 class App extends Component {
     constructor(){
