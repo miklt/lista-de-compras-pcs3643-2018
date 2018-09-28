@@ -7,6 +7,13 @@
     "id": "ff693067-f1f5-43a1-a908-34fe516cec6b",
     "name": "Adicionar itens",
     "commands": [{
+      "id": "29cde81f-6ec2-4905-b988-2a1c857975e3",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
       "id": "73ca47ee-5c0b-4173-a32c-eb4fe92f1c4d",
       "comment": "",
       "command": "type",
@@ -176,6 +183,13 @@
     "id": "1542a54f-4a06-4818-8b60-5e575a1579c6",
     "name": "Apagar os itens",
     "commands": [{
+      "id": "9afaf070-48be-433e-afa1-4f5540a48d67",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
       "id": "97010c72-d046-46ab-a970-8b16b1f2fbd5",
       "comment": "",
       "command": "click",
