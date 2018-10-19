@@ -1,34 +1,101 @@
 import React, { Component } from 'react';
 import './App.css'
+import axios from 'axios';
 import {TabelaDeItens, FormularioAdicionarItem} from './ListaDeCompras'
 import {Grid, Header, Icon} from 'semantic-ui-react'
 //Esta lista de itens é utilizada para inicializar o estado do App.
-const listaDeItens = ['feijão','arroz','leite','açúcar','morangos'];
+//const listaDeItens = ['feijão','arroz','leite','açúcar','morangos'];
 
 
 class App extends Component {
     constructor(){
         super();
         this.state = {
+            /*Desvinculando a lista de compras estática do estado do componente.
             listaDeCompras : listaDeItens
+            */
+            listaDeCompras : []
         };
         this.onAdicionarItem = this.onAdicionarItem.bind(this);
         this.onRemoverItem = this.onRemoverItem.bind(this);
         this.onLimpar = this.onLimpar.bind(this);
+    }
+    pegarListaDaApiv2(url){
+        //Crio uma lista de apenas os nomes
+        //a partir do vetor de objetos.
+        //Depois coloco essa lista no estado do componente
+
+        axios.get(url)
+            .then(result => {
+                const lista = result.data
+                    .map((item) => {
+                        return item.nome
+                    });
+                return lista
+            })
+            .then(result => this.setState({'listaDeCompras':result}))
+            .catch(error => {
+                console.log(error)
+                this.setState({ error })
+            });
+    }
+    pegarListaDaApiv1(url){
+        //Crio uma lista de apenas os nomes
+        //a partir do vetor de objetos.
+        //Depois coloco essa lista no estado do componente
+
+        axios.get(url)
+            .then(result => {
+                const lista = result.data
+                return lista
+            })
+            .then(result => this.setState({'listaDeCompras':result}))
+            .catch(error => {
+                console.log(error)
+                this.setState({ error })
+            });
+
+    }
+
+    componentDidMount(){
+        //Usando o Axios requisitamos a lista de itens.
+        const url = 'http://127.0.0.1:5000/itens'
+        this.pegarListaDaApiv1(url)
+
     }
     onAdicionarItem (elemento){
         if(this.state.listaDeCompras.includes(elemento)) {
             alert("Elemento já existe");
         }else {
             const lista = [...this.state.listaDeCompras, elemento];
+            /*Agora vamos incluir o elemento no backend
+            * */
+            const url = 'http://127.0.0.1:5000/item'
+            axios.post(url,{'item':elemento})
+                .catch(error => {
+                    console.log(error)
+                });
+            //fim axios
             this.setState({listaDeCompras: lista});
         }
     }
     onRemoverItem(elemento){
         const lista = this.state.listaDeCompras.filter(item => item  !== elemento);
+        const url = 'http://127.0.0.1:5000/item/'+elemento;
+        axios.delete(url)
+            .catch(error => {
+                console.log(error)
+            });
         this.setState({listaDeCompras:lista});
     }
     onLimpar(){
+        this.state.listaDeCompras.map((elemento)=>{
+            const url = 'http://127.0.0.1:5000/item/'+elemento;
+            return axios.delete(url)
+                .catch(error => {
+                    console.log(error)
+                });
+        });
         this.setState({listaDeCompras:[]});
     }
     isListaVazia() {

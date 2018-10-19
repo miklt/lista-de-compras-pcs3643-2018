@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://miklt.github.io/lista-de-compras-pcs3643-2018",
   "dependencies": {
+    "axios": "^0.18.0",
     "react": "latest",
     "react-dom": "latest",
     "react-scripts": "latest",
