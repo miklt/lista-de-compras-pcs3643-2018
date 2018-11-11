@@ -14,7 +14,7 @@ class FormularioAdicionarItem extends Component{
         this.setState({item: ''});
     };
     render(){
-        const {onLimpar,isListaVazia} = this.props;
+        const {onLimpar,isListaVazia,onGuardar} = this.props;
         const {item} = this.state;
         return <Form size={'large'} onSubmit={this.enviar }>
             <Form.Input
@@ -27,14 +27,16 @@ class FormularioAdicionarItem extends Component{
                 <Form.Button color={'green'}
                              type='submit'
                              fluid
-                             disabled={!this.state.item}>
+                             >
                     Adicionar
                 </Form.Button>
-<Form.Button color={'yellow'} disabled={isListaVazia}
-         onClick={onLimpar} type={'button'}
-         fluid >
-Limpar
-</Form.Button>
+                <Form.Button color={'yellow'} disabled={isListaVazia}
+                             onClick={onLimpar} type={'button'}
+                             fluid >
+                    Limpar
+                </Form.Button>
+                <Form.Button color={'red'} onClick={onGuardar} type={'button'} fluid >
+                    Guardar</Form.Button>
             </Form.Group>
         </Form>
     }

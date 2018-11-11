@@ -6,9 +6,10 @@ import {Grid, Header, Icon} from 'semantic-ui-react'
 //Esta lista de itens é utilizada para inicializar o estado do App.
 //const listaDeItens = ['feijão','arroz','leite','açúcar','morangos'];
 
-
+const url_v3 = 'http://143.107.102.7/';
 class App extends Component {
     constructor(){
+
         super();
         this.state = {
             /*Desvinculando a lista de compras estática do estado do componente.
@@ -19,6 +20,19 @@ class App extends Component {
         this.onAdicionarItem = this.onAdicionarItem.bind(this);
         this.onRemoverItem = this.onRemoverItem.bind(this);
         this.onLimpar = this.onLimpar.bind(this);
+        this.onGuardar = this.onGuardar.bind(this);
+    }
+    onGuardar (){
+        //const url = 'http://127.0.0.1:5000/lista';
+        const url = url_v3 + 'lista';
+        const lista = this.state.listaDeCompras;
+        axios.post(url,{'lista': lista})
+            .catch(error => {
+                console.log(error)
+            });
+        //fim axios
+        this.setState({listaDeCompras: lista});
+        return;
     }
     pegarListaDaApiv2(url){
         //Crio uma lista de apenas os nomes
@@ -59,18 +73,23 @@ class App extends Component {
 
     componentDidMount(){
         //Usando o Axios requisitamos a lista de itens.
-        const url = 'http://127.0.0.1:5000/itens'
-        this.pegarListaDaApiv1(url)
+        //const url = 'http://127.0.0.1:5000/itens'
+        const url = url_v3+'itens'
+        this.pegarListaDaApiv2(url)
 
     }
     onAdicionarItem (elemento){
-        if(this.state.listaDeCompras.includes(elemento)) {
+        if(elemento.length < 3){
+            alert("O nome do item tem que ter mais de 3 caracteres");
+        }
+        else if(this.state.listaDeCompras.includes(elemento)) {
             alert("Elemento já existe");
         }else {
             const lista = [...this.state.listaDeCompras, elemento];
             /*Agora vamos incluir o elemento no backend
             * */
-            const url = 'http://127.0.0.1:5000/item'
+            //const url = 'http://127.0.0.1:5000/item';
+            const url = url_v3+'item';
             axios.post(url,{'item':elemento})
                 .catch(error => {
                     console.log(error)
@@ -81,7 +100,8 @@ class App extends Component {
     }
     onRemoverItem(elemento){
         const lista = this.state.listaDeCompras.filter(item => item  !== elemento);
-        const url = 'http://127.0.0.1:5000/item/'+elemento;
+        //const url = 'http://127.0.0.1:5000/item/'+elemento;
+        const url = url_v3+'item/'+elemento;
         axios.delete(url)
             .catch(error => {
                 console.log(error)
@@ -90,7 +110,8 @@ class App extends Component {
     }
     onLimpar(){
         this.state.listaDeCompras.map((elemento)=>{
-            const url = 'http://127.0.0.1:5000/item/'+elemento;
+            //const url = 'http://127.0.0.1:5000/item/'+elemento;
+            const url = url_v3+'/item/'+elemento;
             return axios.delete(url)
                 .catch(error => {
                     console.log(error)
@@ -115,7 +136,9 @@ class App extends Component {
         <Grid.Column width={8}>
             <FormularioAdicionarItem isListaVazia={this.isListaVazia()}
                                      onAdicionarItem={this.onAdicionarItem}
-                                     onLimpar={this.onLimpar}/>
+                                     onLimpar={this.onLimpar}
+                                     onGuardar = {this.onGuardar}
+            />
 
             <TabelaDeItens itens={listaDeCompras} onRemoverItem = {this.onRemoverItem}/>
         </Grid.Column>
