@@ -6,7 +6,7 @@ import {Grid, Header, Icon} from 'semantic-ui-react'
 //Esta lista de itens é utilizada para inicializar o estado do App.
 //const listaDeItens = ['feijão','arroz','leite','açúcar','morangos'];
 
-const url_v3 = 'http://143.107.102.7/';
+const url_v3 = 'https://lista-de-compras.ml/';
 class App extends Component {
     constructor(){
 
