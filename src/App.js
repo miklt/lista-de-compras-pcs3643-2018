@@ -23,9 +23,10 @@ class App extends Component {
         this.onGuardar = this.onGuardar.bind(this);
     }
     onGuardar (){
-        //const url = 'http://127.0.0.1:5000/lista';
+        
         const url = url_v3 + 'lista';
         const lista = this.state.listaDeCompras;
+        //inicio axios
         axios.post(url,{'lista': lista})
             .catch(error => {
                 console.log(error)
@@ -34,7 +35,7 @@ class App extends Component {
         this.setState({listaDeCompras: lista});
         return;
     }
-    pegarListaDaApiv2(url){
+    pegarListaDaApi(url){
         //Crio uma lista de apenas os nomes
         //a partir do vetor de objetos.
         //Depois coloco essa lista no estado do componente
@@ -53,29 +54,12 @@ class App extends Component {
                 this.setState({ error })
             });
     }
-    pegarListaDaApiv1(url){
-        //Crio uma lista de apenas os nomes
-        //a partir do vetor de objetos.
-        //Depois coloco essa lista no estado do componente
-
-        axios.get(url)
-            .then(result => {
-                const lista = result.data
-                return lista
-            })
-            .then(result => this.setState({'listaDeCompras':result}))
-            .catch(error => {
-                console.log(error)
-                this.setState({ error })
-            });
-
-    }
-
+    
     componentDidMount(){
         //Usando o Axios requisitamos a lista de itens.
         //const url = 'http://127.0.0.1:5000/itens'
         const url = url_v3+'itens'
-        this.pegarListaDaApiv2(url)
+        this.pegarListaDaApi(url)
 
     }
     onAdicionarItem (elemento){
@@ -87,8 +71,7 @@ class App extends Component {
         }else {
             const lista = [...this.state.listaDeCompras, elemento];
             /*Agora vamos incluir o elemento no backend
-            * */
-            //const url = 'http://127.0.0.1:5000/item';
+            * */            
             const url = url_v3+'item';
             axios.post(url,{'item':elemento})
                 .catch(error => {
@@ -100,7 +83,7 @@ class App extends Component {
     }
     onRemoverItem(elemento){
         const lista = this.state.listaDeCompras.filter(item => item  !== elemento);
-        //const url = 'http://127.0.0.1:5000/item/'+elemento;
+        
         const url = url_v3+'item/'+elemento;
         axios.delete(url)
             .catch(error => {
@@ -110,7 +93,7 @@ class App extends Component {
     }
     onLimpar(){
         this.state.listaDeCompras.map((elemento)=>{
-            //const url = 'http://127.0.0.1:5000/item/'+elemento;
+            
             const url = url_v3+'/item/'+elemento;
             return axios.delete(url)
                 .catch(error => {
