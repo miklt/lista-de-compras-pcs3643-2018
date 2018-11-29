@@ -1,5 +1,5 @@
 import {Component} from "react";
-import {Icon, Grid, Form} from "semantic-ui-react";
+import {Form,Icon} from "semantic-ui-react";
 import React from "react";
 import './FormularioAdicionarItem.css';
 
@@ -14,29 +14,32 @@ class FormularioAdicionarItem extends Component{
         this.setState({item: ''});
     };
     render(){
-        const {onLimpar,isListaVazia,onGuardar} = this.props;
+        const {onLimpar,isListaVazia,onGuardar, onCarregar} = this.props;
         const {item} = this.state;
         return <Form size={'large'} onSubmit={this.enviar }>
-            <Form.Input
-                autoFocus
-                placeholder='Que você vai comprar hoje?'
-                onChange={this.onChange}
-                name='item'
-                value={item}/>
-            <Form.Group widths='equal' >
-                <Form.Button color={'green'}
-                             type='submit'
-                             fluid
-                             >
-                    Adicionar
+            <Form.Group width={'350px'} >
+                <Form.Input
+                    autoFocus  placeholder='Que você vai comprar hoje?'
+                    onChange={this.onChange}
+                    name='item'
+                    value={item}/>
+                <Form.Button color={'green'} type='submit'>
+                    <Icon name={'send'}/>
                 </Form.Button>
+            </Form.Group>
+            <Form.Group widths='equal' >
+
                 <Form.Button color={'yellow'} disabled={isListaVazia}
                              onClick={onLimpar} type={'button'}
                              fluid >
-                    Limpar
+                    <Icon name={'trash'}/>
                 </Form.Button>
-                <Form.Button color={'red'} onClick={onGuardar} type={'button'} fluid >
-                    Guardar</Form.Button>
+                <Form.Button color={'black'} onClick={onGuardar} type={'button'} fluid >
+                    <Icon name={'save'}/>
+                </Form.Button>
+                <Form.Button color={'white'} onClick={onCarregar} type={'button'} fluid >
+                    <Icon name={'upload'} color={'black'}/>
+                </Form.Button>
             </Form.Group>
         </Form>
     }
