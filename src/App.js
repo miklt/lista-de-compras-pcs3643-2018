@@ -6,7 +6,8 @@ import {Grid, Header, Icon} from 'semantic-ui-react'
 //Esta lista de itens é utilizada para inicializar o estado do App.
 //const listaDeItens = ['feijão','arroz','leite','açúcar','morangos'];
 
-const url_v3 = 'https://lista-de-compras.tk/';
+//const url_v3 = 'https://lista-de-compras.tk/';
+const url_v3 = 'http://0.0.0.0:5000/';
 class App extends Component {
     constructor(){
 
@@ -23,14 +24,14 @@ class App extends Component {
         this.onGuardar = this.onGuardar.bind(this);
     }
     onGuardar (){
-        //const url = 'http://127.0.0.1:5000/lista';
+        
         const url = url_v3 + 'lista';
         const lista = this.state.listaDeCompras;
         axios.post(url,{'lista': lista})
             .catch(error => {
                 console.log(error)
             });
-        //fim axios
+        
         this.setState({listaDeCompras: lista});
         return;
     }

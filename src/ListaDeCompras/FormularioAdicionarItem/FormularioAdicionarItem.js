@@ -1,5 +1,5 @@
 import {Component} from "react";
-import {Icon, Grid, Form} from "semantic-ui-react";
+import {Form} from "semantic-ui-react";
 import React from "react";
 import './FormularioAdicionarItem.css';
 

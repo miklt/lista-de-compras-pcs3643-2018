@@ -1,5 +1,5 @@
 import {Component} from "react";
-import {Grid, Icon,Label, Message} from "semantic-ui-react";
+import {Icon,Label, Message} from "semantic-ui-react";
 import React from "react";
 import './TabelaDeItens.css'
 import {BotaoRemover} from '../Botoes/index'
