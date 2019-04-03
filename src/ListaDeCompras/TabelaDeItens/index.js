@@ -1,2 +1,2 @@
-import TabelaDeItens from './TabelaDeItensv3'
+import TabelaDeItens from './TabelaDeItens'
 export {TabelaDeItens}

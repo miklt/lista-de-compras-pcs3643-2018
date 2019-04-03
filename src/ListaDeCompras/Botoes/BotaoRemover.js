@@ -4,7 +4,9 @@ import './BotaoRemover.css';
 
 const BotaoRemover = (props) => {
     return (
-            <Icon className={"BotaoRemover"} onClick={props.onClick}  size={'small'} name="delete"/>
+            <Icon className={"BotaoRemover"} 
+            name={'delete'} onClick={props.onClick} 
+            size={'small'} />
     )
 };
 export default BotaoRemover

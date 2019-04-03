@@ -13,29 +13,15 @@ class App extends Component {
 
         super();
         this.state = {
-            /*Desvinculando a lista de compras estática do estado do componente.
-            listaDeCompras : listaDeItens
-            */
             listaDeCompras : []
         };
         this.onAdicionarItem = this.onAdicionarItem.bind(this);
         this.onRemoverItem = this.onRemoverItem.bind(this);
         this.onLimpar = this.onLimpar.bind(this);
-        this.onGuardar = this.onGuardar.bind(this);
-    }
-    onGuardar (){
         
-        const url = url_v3 + 'lista';
-        const lista = this.state.listaDeCompras;
-        axios.post(url,{'lista': lista})
-            .catch(error => {
-                console.log(error)
-            });
-        
-        this.setState({listaDeCompras: lista});
-        return;
     }
-    pegarListaDaApiv2(url){
+    
+    pegarListaDaApi(url){
         //Crio uma lista de apenas os nomes
         //a partir do vetor de objetos.
         //Depois coloco essa lista no estado do componente
@@ -54,29 +40,13 @@ class App extends Component {
                 this.setState({ error })
             });
     }
-    pegarListaDaApiv1(url){
-        //Crio uma lista de apenas os nomes
-        //a partir do vetor de objetos.
-        //Depois coloco essa lista no estado do componente
-
-        axios.get(url)
-            .then(result => {
-                const lista = result.data
-                return lista
-            })
-            .then(result => this.setState({'listaDeCompras':result}))
-            .catch(error => {
-                console.log(error)
-                this.setState({ error })
-            });
-
-    }
+    
 
     componentDidMount(){
         //Usando o Axios requisitamos a lista de itens.
         //const url = 'http://127.0.0.1:5000/itens'
         const url = url_v3+'itens'
-        this.pegarListaDaApiv2(url)
+        this.pegarListaDaApi(url)
 
     }
     onAdicionarItem (elemento){
@@ -111,8 +81,7 @@ class App extends Component {
     }
     onLimpar(){
         this.state.listaDeCompras.map((elemento)=>{
-            //const url = 'http://127.0.0.1:5000/item/'+elemento;
-            const url = url_v3+'/item/'+elemento;
+            const url = url_v3+'item/'+elemento;
             return axios.delete(url)
                 .catch(error => {
                     console.log(error)
@@ -126,7 +95,7 @@ class App extends Component {
     render() {
         const {listaDeCompras} = this.state;
         return (
-<Grid columns={1} centered className={'App'}>
+<Grid columns={3} centered className={'App'}>
     <Grid.Row>
         <Header inverted as='h2' icon textAlign='center'>
             <Icon  inverted color={'red'} name='shop' circular />
@@ -138,7 +107,7 @@ class App extends Component {
             <FormularioAdicionarItem isListaVazia={this.isListaVazia()}
                                      onAdicionarItem={this.onAdicionarItem}
                                      onLimpar={this.onLimpar}
-                                     onGuardar = {this.onGuardar}
+                                     
             />
 
             <TabelaDeItens itens={listaDeCompras} onRemoverItem = {this.onRemoverItem}/>

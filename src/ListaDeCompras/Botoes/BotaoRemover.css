@@ -1,3 +1,4 @@
 .BotaoRemover{
-    color:black;
+    color: brown;
+    align-self: flex-end;
 }
