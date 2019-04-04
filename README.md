@@ -1,7 +1,7 @@
 # Lista de Compras
 Projeto de Frontend para a disciplina PCS3643-2018
 ## Instalação
-Para executar a aplicação é necessário ter instalado o Node na versão 10 ou posterior
+Para executar a aplicação é necessário ter instalado o git e o Node na versão 10 ou posterior
 ```
 https://nodejs.org/en/download/current/
 ```
@@ -9,7 +9,7 @@ https://nodejs.org/en/download/current/
 
 Abrir um terminal e clonar o repositório:
 ```
-https://github.com/miklt/lista-de-compras-pcs3643-2018.git
+git clone https://github.com/miklt/lista-de-compras-pcs3643-2018.git
 ```
 
 Entrar na pasta
